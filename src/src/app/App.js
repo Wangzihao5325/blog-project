@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.css';
-import { Button } from 'antd';
+import { Provider } from 'react-redux';
+
+import store from '../store/index';
+import Router from '../router/index';
+
 
 function App() {
   return (
-    <div className="App">
-   <Button>123</Button>
-    </div>
+    <Provider store={store}>
+      <div>
+        <Router />
+      </div>
+    </Provider>
   );
 }
 
