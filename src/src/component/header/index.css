@@ -1,0 +1,19 @@
+.header-item{
+    background-color: #222;
+    color: #FFF;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    text-align: right;
+    font-size: 16px;
+}
+
+.jus-content-center{
+    justify-content: center;
+}
+
+.jus-content-right{
+    justify-content: flex-end
+}
