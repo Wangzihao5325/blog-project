@@ -11,6 +11,9 @@ module.exports = override(
     modifyVars: {
       '@primary-color': '#222',
       '@layout-header-padding': 0,
+      '@menu-dark-color': '#909090',
+      '@menu-dark-submenu-bg': '#222',
+      '@menu-dark-bg': '#222'
     },
   }),
 );
