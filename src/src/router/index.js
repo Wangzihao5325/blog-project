@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import asyncImport from './asyncComponent';
+import Variables from '../global/Variables';
 
 import ResponsiveHeader from '../component/header/index';
 
@@ -15,9 +16,9 @@ export default class AppRouter extends Component {
                 <div>
                     <ResponsiveHeader />
                     <Switch>
-                        <Route path='/' exact component={MainScreen} />
-                        <Route path='/show_list/' exact component={ShowList} />
-                        <Route path='/about_me/' exact component={AboutMe} />
+                        <Route path={Variables.menuKeyMapToRouter['blog']} exact component={MainScreen} />
+                        <Route path={Variables.menuKeyMapToRouter['show-list']} exact component={ShowList} />
+                        <Route path={Variables.menuKeyMapToRouter['about-me']} exact component={AboutMe} />
                     </Switch>
                 </div>
             </Router>

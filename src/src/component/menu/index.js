@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
+import Variables from '../../global/Variables';
+
+const KEY_ARR = Object.keys(Variables.menuKeyMapToRouter);
 
 class HeaderMenu extends Component {
 
     state = {
-        current: 'blog'
+        current: KEY_ARR[0]
     }
 
     handleClick = e => {
         this.setState({
             current: e.key
         }, () => {
-            switch (this.state.current) {
-                case 'blog':
-                    this.props.history.push('/');
-                    break;
-                case 'show-list':
-                    this.props.history.push('/show_list/');
-                    break;
-                case 'about-me':
-                    this.props.history.push('/about_me/');
-                    break;
-            }
+            const { current } = this.state;
+            this.props.history.push(`${Variables.menuKeyMapToRouter[current]}`);
         });
     }
 
@@ -34,15 +28,15 @@ class HeaderMenu extends Component {
                 mode='horizontal'
                 theme='dark'
             >
-                <Menu.Item key='blog'>
+                <Menu.Item key={KEY_ARR[0]}>
                     <Icon type="book" />
                     Blog
                 </Menu.Item>
-                <Menu.Item key='show-list'>
+                <Menu.Item key={KEY_ARR[1]}>
                     <Icon type="codepen-circle" />
                     Demo
                 </Menu.Item>
-                <Menu.Item key='about-me'>
+                <Menu.Item key={KEY_ARR[2]}>
                     <Icon type="user" />
                     About me
                 </Menu.Item>
