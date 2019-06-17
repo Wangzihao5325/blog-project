@@ -12,6 +12,7 @@ const KEY_ARR = Object.keys(Variables.menuKeyMapToRouter);
 class HeaderMenu extends Component {
 
     handleClick = e => {
+        //暂时性方案
         store.dispatch(menu_select(e.key));
         this.props.history.push(`${Variables.menuKeyMapToRouter[e.key]}`);
     }
