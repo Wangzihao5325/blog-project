@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
+
+import store from '../../store/index';
+import { menu_select } from '../../store/actions/menuActions';
 import Variables from '../../global/Variables';
 
 const KEY_ARR = Object.keys(Variables.menuKeyMapToRouter);
 
 class HeaderMenu extends Component {
 
-    state = {
-        current: KEY_ARR[0]
-    }
-
     handleClick = e => {
-        this.setState({
-            current: e.key
-        }, () => {
-            const { current } = this.state;
-            this.props.history.push(`${Variables.menuKeyMapToRouter[current]}`);
-        });
+        store.dispatch(menu_select(e.key));
+        this.props.history.push(`${Variables.menuKeyMapToRouter[e.key]}`);
     }
 
     render() {
         return (
             <Menu
                 onClick={this.handleClick}
-                selectedKeys={[this.state.current]}
+                selectedKeys={[this.props.selectKey]}
                 mode='horizontal'
                 theme='dark'
             >
@@ -45,5 +41,11 @@ class HeaderMenu extends Component {
     }
 }
 
-const HeaderMenuWithRouter = withRouter(HeaderMenu);
+function mapState2Props(store) {
+    return {
+        selectKey: store.menu.selectKey
+    }
+}
+
+const HeaderMenuWithRouter = withRouter(connect(mapState2Props)(HeaderMenu));
 export default HeaderMenuWithRouter;
