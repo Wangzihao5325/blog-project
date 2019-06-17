@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
-export default class HeaderMenu extends Component {
+class HeaderMenu extends Component {
 
     state = {
         current: 'blog'
@@ -10,6 +11,18 @@ export default class HeaderMenu extends Component {
     handleClick = e => {
         this.setState({
             current: e.key
+        }, () => {
+            switch (this.state.current) {
+                case 'blog':
+                    this.props.history.push('/');
+                    break;
+                case 'show-list':
+                    this.props.history.push('/show_list/');
+                    break;
+                case 'about-me':
+                    this.props.history.push('/about_me/');
+                    break;
+            }
         });
     }
 
@@ -37,3 +50,6 @@ export default class HeaderMenu extends Component {
         );
     }
 }
+
+const HeaderMenuWithRouter = withRouter(HeaderMenu);
+export default HeaderMenuWithRouter;
