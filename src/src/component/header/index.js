@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Layout, Col, Row, Icon, Avatar } from 'antd';
 import './index.css';
+import store from '../../store/index';
+import { open_mobile_select } from '../../store/actions/menuActions';
 import Variables from '../../global/Variables';
-
 import HeaderMenu from '../menu/index';
-
 const { Header } = Layout;
 
 export default class ResponsiveHeader extends Component {
@@ -22,7 +22,7 @@ export default class ResponsiveHeader extends Component {
                         </div>
                     </Col>
                     <Col xs={8} sm={0}>
-                        <div className='header-item jus-content-right'>
+                        <div onClick={this.mobile_more} className='header-item jus-content-right'>
                             <Icon style={{ fontSize: 22 }} type="appstore-o" />
                         </div>
                     </Col>
@@ -41,5 +41,9 @@ export default class ResponsiveHeader extends Component {
                 </Row>
             </Header>
         );
+    }
+
+    mobile_more = () => {
+        store.dispatch(open_mobile_select());
     }
 }
