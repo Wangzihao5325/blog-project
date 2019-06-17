@@ -29,7 +29,7 @@ export default class ResponsiveHeader extends Component {
                     {/*sm-header */}
                     <Col xs={0} sm={16}>
                         <div className='header-item'>
-                            <HeaderMenu />
+                            <HeaderMenu mode='horizontal' />
                         </div>
                     </Col>
                     <Col xs={0} sm={8}>

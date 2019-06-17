@@ -22,7 +22,7 @@ class HeaderMenu extends Component {
             <Menu
                 onClick={this.handleClick}
                 selectedKeys={[this.props.selectKey]}
-                mode='horizontal'
+                mode={this.props.mode}
                 theme='dark'
             >
                 <Menu.Item key={KEY_ARR[0]}>

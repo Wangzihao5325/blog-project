@@ -6,7 +6,7 @@ import asyncImport from './asyncComponent';
 import Variables from '../global/Variables';
 import store from '../store/index';
 import { close_mobile_select } from '../store/actions/menuActions';
-
+import MobileMenu from '../component/menu/index';
 import ResponsiveHeader from '../component/header/index';
 
 const KEY_ARR = Object.keys(Variables.menuKeyMapToRouter);
@@ -31,6 +31,7 @@ class AppRouter extends Component {
                         onClose={this.close_mobile_drawer}
                         visible={this.props.isDrawerShow}
                     >
+                        <MobileMenu mode='inline' />
                     </Drawer>
                 </div>
             </Router>
